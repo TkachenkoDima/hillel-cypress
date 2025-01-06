@@ -17,6 +17,11 @@ class MainPage {
       youtubeButton: () => cy.get('span[class$="icon-youtube"]'),
       instagramButton: () => cy.get('span[class$="icon-instagram"]'),
       linkedinButton: () => cy.get('span[class$="icon-linkedin"]'),
+
+      //Login form
+      emailInput: () => cy.get('#signinEmail'),
+      passwordInput: () => cy.get('#signinPassword'),
+      loginButton: () => cy.get('button[class="btn btn-primary"]'),
     };
   
     clickSignIn() {
@@ -41,9 +46,10 @@ class MainPage {
 
     loginWithExistingUser(email, password) {
         this.clickSignIn();
-        cy.get('input[type="email"]').type(email);
-        cy.get('input[type="password"]').type(password);
-        cy.get('.btn-primary').click();
+        this.elements.emailInput().type(email);
+        this.elements.passwordInput().type(password);
+        this.elements.loginButton().click();
+        cy.get('div[class="alert alert-success"]').should('be.visible');
     }
   }
   

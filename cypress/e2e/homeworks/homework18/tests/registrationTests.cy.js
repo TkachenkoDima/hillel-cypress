@@ -8,7 +8,6 @@ describe('Hillel Auto Registration Tests', () => {
   let existingUser;
   let newUser;
 
-
   beforeEach(() => {
     basePage.visit();
     mainPage.clickSignUpButton();
